@@ -40,6 +40,7 @@ it('should yeld 0 if an empty array is provided', () => {
 });
 
 it('should throw an error if no value is passed in the function', () => {
-	const result = add();
-	// error
+	const resultFn = () => add();
+	expect(resultFn).toThrow();
+	// try/catch error catch & expect(error).toBeDefined()
 });
