@@ -1,57 +1,59 @@
-import { it, expect } from 'vitest';
+import { it, expect, describe } from 'vitest';
 
 import { add } from './math';
 
-it('should summarize all numbers values in an array', () => {
-	// Arrange
-	const numbers = [1, 2, 3];
+describe('add()', () => {
+	it('should summarize all numbers values in an array', () => {
+		// Arrange
+		const numbers = [1, 2, 3];
 
-	// Act
-	const result = add(numbers);
+		// Act
+		const result = add(numbers);
 
-	// Assert
-	const expectedResult = numbers.reduce((prevValue, currValue) => prevValue + currValue, 0);
-	expect(result).toBe(expectedResult);
-});
+		// Assert
+		const expectedResult = numbers.reduce((prevValue, currValue) => prevValue + currValue, 0);
+		expect(result).toBe(expectedResult);
+	});
 
-it('should yeld NaN if at least one invalid number is provided', () => {
-	const inputs = ['Invalid', 5];
+	it('should yeld NaN if at least one invalid number is provided', () => {
+		const inputs = ['Invalid', 5];
 
-	const result = add(inputs);
+		const result = add(inputs);
 
-	expect(result).toBeNaN();
-});
+		expect(result).toBeNaN();
+	});
 
-it('should yeld a correct sum if an array of numeric string values is provided', () => {
-	const stringNumbers = ['1', '2'];
+	it('should yeld a correct sum if an array of numeric string values is provided', () => {
+		const stringNumbers = ['1', '2'];
 
-	const result = add(stringNumbers);
+		const result = add(stringNumbers);
 
-	const expectedResult = stringNumbers.reduce((prevValue, currValue) => +prevValue + +currValue, 0);
-	expect(result).toBe(expectedResult);
-});
+		const expectedResult = stringNumbers.reduce((prevValue, currValue) => +prevValue + +currValue, 0);
+		expect(result).toBe(expectedResult);
+	});
 
-it('should yeld 0 if an empty array is provided', () => {
-	const numbers = [];
+	it('should yeld 0 if an empty array is provided', () => {
+		const numbers = [];
 
-	const result = add(numbers);
+		const result = add(numbers);
 
-	expect(result).toBe(0);
-});
+		expect(result).toBe(0);
+	});
 
-it('should throw an error if no value is passed in the function', () => {
-	const resultFn = () => add();
+	it('should throw an error if no value is passed in the function', () => {
+		const resultFn = () => add();
 
-	expect(resultFn).toThrow(/is not iterable/);
-	// try/catch error catch & expect(error).toBeDefined()
-});
+		expect(resultFn).toThrow(/is not iterable/);
+		// try/catch error catch & expect(error).toBeDefined()
+	});
 
-it('should throw an error if provided with multiple arguments instead of an array', () => {
-	const num1 = 1;
-	const num2 = 2;
+	it('should throw an error if provided with multiple arguments instead of an array', () => {
+		const num1 = 1;
+		const num2 = 2;
 
-	const resultFn = () => add(num1, num2);
+		const resultFn = () => add(num1, num2);
 
-	// regex error message
-	expect(resultFn).toThrow(/is not iterable/);
+		// regex error message
+		expect(resultFn).toThrow(/is not iterable/);
+	});
 });
