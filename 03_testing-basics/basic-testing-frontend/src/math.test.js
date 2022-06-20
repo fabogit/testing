@@ -41,7 +41,8 @@ it('should yeld 0 if an empty array is provided', () => {
 
 it('should throw an error if no value is passed in the function', () => {
 	const resultFn = () => add();
-	expect(resultFn).toThrow();
+
+	expect(resultFn).toThrow(/is not iterable/);
 	// try/catch error catch & expect(error).toBeDefined()
 });
 
@@ -51,5 +52,6 @@ it('should throw an error if provided with multiple arguments instead of an arra
 
 	const resultFn = () => add(num1, num2);
 
-	expect(resultFn).toThrow();
+	// regex error message
+	expect(resultFn).toThrow(/is not iterable/);
 });
