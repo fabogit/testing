@@ -19,7 +19,7 @@ afterEach(() => {
 afterAll(() => {
 });
 
-describe('User', () => {
+describe.concurrent('User', () => {
 	it('should update the email', () => {
 		const newTestEmail = 'test2@test.com';
 
