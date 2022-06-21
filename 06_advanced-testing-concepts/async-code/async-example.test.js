@@ -1,6 +1,6 @@
 import { it, expect, describe } from 'vitest';
 
-import { generateToken } from './async-example';
+import { generateToken, generateTokenPromise } from './async-example';
 
 describe('generateToken()', () => {
 	it('should generate a token value', (done) => {
@@ -9,32 +9,35 @@ describe('generateToken()', () => {
 		generateToken(testUserEmail, (err, token) => {
 			// expecting callback result to exist
 			try {
-				expect(token).toBeDefined();
+				return expect(token).toBeDefined();
 				done();
 			} catch (error) {
 				done(error);
 			}
 
-			// FIX async bug, this works if done cb is not present
+			// FIX async bug, this works if done cb is not present -> it('should work', () => new Promise(done => {... done()}))
 			// try {
-			// 	expect(token).toBe(2);
+			// 	return expect(token).toBe(2);
 			// 	done();
 			// } catch (error) {
 			// 	done(error);
 			// }
 		});
 	});
+});
+
+describe('generateTokenPromise()', () => {
 	it('should generate a token value (promise)', () => {
 		const testUserEmail = 'test@email.com';
 
-		expect(generateToken(testUserEmail)).resolves.toBeDefined();
+		return expect(generateTokenPromise(testUserEmail)).resolves.toBeDefined();
 		// return await expect(generateToken(testUserEmail)).rejects.toThrow()
 	});
 
 	it('should generate a token value (async/await)', async () => {
 		const testUserEmail = 'test@email.com';
 
-		const token = await generateToken(testUserEmail);
+		const token = await generateTokenPromise(testUserEmail);
 
 		expect(token).toBeDefined();
 	});
