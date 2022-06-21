@@ -1,7 +1,8 @@
 import { it, expect, describe } from 'vitest';
 
-import { transformToNumber } from './numbers';
+import { transformToNumber, cleanNumbers } from './numbers';
 
+// unit test
 describe('transformToNumber()', () => {
 	it('should transform a string number to a number of type number', () => {
 		const input = '1';
@@ -28,5 +29,16 @@ describe('transformToNumber()', () => {
 
 		expect(result).toBeNaN();
 		expect(result2).toBeNaN();
+	});
+});
+
+// integration test
+describe('cleanNumbers()', () => {
+	it('should return an array of numbers values if an array of string numbers values is provided', () => {
+		const numberValues = ['1', '2'];
+
+		const cleanedNumbers = cleanNumbers(numberValues);
+
+		expect(cleanedNumbers[0]).toBeTypeOf('number');
 	});
 });
