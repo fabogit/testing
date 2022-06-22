@@ -15,7 +15,7 @@ Testing using Jest and Vitest
 
 in `package.json` use
 
-- for `server` testing (nodejs)
+- for `server` testing, default enviroment `node`
 
 ```
 "scripts": {
@@ -24,7 +24,7 @@ in `package.json` use
   },
 ```
 
-- for `client` testing (jsdom, happy-dom)
+- for `client` testing, enviroment `jsdom` (jest) `happy-dom` (vitest)
 
 ```
 "scripts": {
