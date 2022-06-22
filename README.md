@@ -15,11 +15,21 @@ Testing using Jest and Vitest
 
 in `package.json` use
 
+- for `server` testing (nodejs)
+
 ```
 "scripts": {
     "test": "vitest --run --reporter verbose",
-	"test:watch": "vitest"
+    "test:watch": "vitest"
   },
+```
+
+- for `client` testing (jsdom, happy-dom)
+
+```
+"scripts": {
+    "test": "vitest --run --enviroment happy-dom"
+    },
 ```
 
 `npm test`
