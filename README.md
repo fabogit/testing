@@ -33,3 +33,9 @@ in `package.json` use
 ```
 
 `npm test`
+
+https://vitest.dev/
+
+https://vitest.dev/guide/migration.html
+
+https://testing-library.com/
